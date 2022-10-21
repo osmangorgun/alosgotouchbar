@@ -1,0 +1,165 @@
+{
+  "name": "alosgotouchbar",
+  "displayName": "alosgotouchbar",
+  "description": "Visual code laravel custom touchbar plugin",
+  "version": "0.0.1",
+  "publisher": "alosgotouchbar",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/main.js",
+  "contributes": {
+    "commands": [{
+        "command": "alosgotouchbar.enableFileGroup",
+        "group": "navigation",
+        "title": "📂"
+      },
+      {
+        "command": "alosgotouchbar.enableCommentGroup",
+        "group": "navigation",
+        "title": "📌"
+      },
+      {
+        "command": "alosgotouchbar.enableSrcGroup",
+        "group": "navigation",
+        "title": "⚒️"
+      },
+      {
+        "command": "alosgotouchbar.fixmodel",
+        "group": "file",
+        "title": "♻️"
+      },
+      {
+        "command": "alosgotouchbar.createView",
+        "group": "file",
+        "title": "Blade"
+      },
+      {
+        "command": "alosgotouchbar.newmodel",
+        "group": "file",
+        "title": "Model"
+      },
+      {
+        "command": "alosgotouchbar.newcontroller",
+        "group": "file",
+        "title": "Controller"
+      },
+      {
+        "command": "alosgotouchbar.newdatatables",
+        "group": "file",
+        "title": "Datatables"
+      },
+      {
+        "command": "alosgotouchbar.bladeif",
+        "title": "@if",
+        "group": "fok"
+      },
+      {
+        "command": "alosgotouchbar.bladeecho",
+        "title": "{{ }}",
+        "group": "fok"
+      },
+      {
+        "command": "alosgotouchbar.bladecomment",
+        "title": "{{-- --}}",
+        "group": "fok"
+      },
+      {
+        "command": "alosgotouchbar.comment",
+        "title": "/* */",
+        "group": "fok"
+      },
+      {
+        "command": "alosgotouchbar.closeGroup",
+        "group": "lrv",
+        "title": "❌"
+      }
+    ],
+    "menus": {
+      "touchBar": [{
+          "command": "alosgotouchbar.enableFileGroup",
+          "group": "a1"
+        },
+        {
+          "command": "alosgotouchbar.enableCommentGroup",
+          "group": "a1"
+        },
+        {
+          "command": "alosgotouchbar.enableSrcGroup",
+          "group": "a1"
+        },
+        {
+          "command": "alosgotouchbar.createView",
+          "group": "file",
+          "when": "enabledFileGroup"
+        },
+        {
+          "command": "alosgotouchbar.newmodel",
+          "group": "file",
+          "when": "enabledFileGroup"
+        }, 
+        {
+          "command": "alosgotouchbar.fixmodel",
+          "group": "f3",
+          "when": "enabledFileGroup"
+        },
+        {
+          "command": "alosgotouchbar.newcontroller",
+          "group": "file",
+          "when": "enabledFileGroup"
+        },
+        {
+          "command": "alosgotouchbar.newdatatables",
+          "group": "file",
+          "when": "enabledFileGroup"
+        },
+        {
+          "command": "alosgotouchbar.bladeif",
+          "group": "fok",
+          "when": "editorLangId == blade &&  enabledCommentGroup"
+        },
+        {
+          "command": "alosgotouchbar.bladeecho",
+          "group": "fok",
+          "when": "editorLangId == blade &&  enabledCommentGroup"
+        },
+        {
+          "command": "alosgotouchbar.bladecomment",
+          "group": "fok",
+          "when": "editorLangId == blade && enabledCommentGroup"
+        },
+        {
+          "command": "alosgotouchbar.comment",
+          "when": "editorLangId == blade &&  enabledCommentGroup",
+          "group": "fok"
+        },
+        {
+          "command": "alosgotouchbar.closeGroup",
+          "group": "navigation",
+          "when": "enabledGroup"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "applicationinsights": "^0.17.1",
+    "tree-kill": "^1.1.0"
+  }
+}
